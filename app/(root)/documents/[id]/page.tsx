@@ -20,9 +20,9 @@ const Documents = async ({ params: { id } }: SearchParamProps) => {
   const users = await getClerkUsers({ userIds });
 
   // @ts-ignore
-  const usersData = users.map((user: User) => ({
+  const usersData = users?.map((user: User) => ({
     ...user,
-    userType: room.usersAccesses[user.email]?.includes("room:write")
+    userType: room.usersAccesses[user?.email]?.includes("room:write")
       ? "editor"
       : "viewer",
   })) as any;
